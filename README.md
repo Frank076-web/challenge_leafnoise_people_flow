@@ -55,6 +55,17 @@ Luego de agregar las variables de entorno, levanta la app de docker usando Docke
 docker-compose up --build -d
 ```
 
+> ⚠️ Nota: Si la descarga de imágenes de Docker falla (problema con Docker Hub), la aplicación también se puede ejecutar localmente sin Docker.  
+> Para ello, asegúrate de tener instalado requirements.txt y MongoDB corriendo en tu máquina.
+> Luego, actualiza la variable de entorno MONGO_HOST en tu archivo .env a:
+> ```
+> MONGO_HOST=mongodb://localhost:27017/people_flow_db -> 'localhost' en vez de 'mongo'
+> ```
+> Luego ejecuta la app:
+> ```
+> flask --app main run --debug --host=0.0.0.0 --port 8000
+> ```
+
 #### Semilla Para Poblar la DB
 Luego de levantar la app, para poblar la base de datos puedes usar la siguiente ruta:
 ```
