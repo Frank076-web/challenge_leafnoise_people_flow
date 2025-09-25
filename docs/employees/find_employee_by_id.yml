@@ -1,0 +1,49 @@
+tags:
+    - Employees
+parameters:
+    - name: id
+      in: path
+      type: string
+      required: true
+      description: Employee ID
+responses:
+    '200':
+        description: Employee found
+        schema:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                data:
+                    $ref: '#/definitions/EmployeeDto'
+    '400':
+        description: Invalid ID
+    '404':
+        description: Employee not found
+
+definitions:
+    EmployeeDto:
+        type: object
+        properties:
+            id:
+                type: string
+            name:
+                type: string
+            last_name:
+                type: string
+            email:
+                type: string
+            position:
+                type: string
+            salary:
+                type: number
+                format: float
+            admission_date:
+                type: string
+                format: date-time
+            deleted:
+                type: boolean
+            deleted_at:
+                type: string
+                format: date-time
+                nullable: true

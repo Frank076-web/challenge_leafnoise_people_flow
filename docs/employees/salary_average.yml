@@ -1,0 +1,16 @@
+tags:
+    - Employees
+responses:
+    '200':
+        description: Average salary calculated
+        schema:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                data:
+                    type: object
+                    properties:
+                        average_salary:
+                            type: number
+                            format: float

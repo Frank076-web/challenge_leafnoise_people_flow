@@ -1,0 +1,72 @@
+tags:
+    - Employees
+parameters:
+    - name: body
+      in: body
+      required: true
+      schema:
+          $ref: '#/definitions/EmployeeCreate'
+responses:
+    '200':
+        description: Employee created successfully
+        schema:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                data:
+                    $ref: '#/definitions/EmployeeDto'
+    '400':
+        description: Data validation failed
+
+definitions:
+    EmployeeDto:
+        type: object
+        properties:
+            id:
+                type: string
+            name:
+                type: string
+            last_name:
+                type: string
+            email:
+                type: string
+            position:
+                type: string
+            salary:
+                type: number
+                format: float
+            admission_date:
+                type: string
+                format: date-time
+            deleted:
+                type: boolean
+            deleted_at:
+                type: string
+                format: date-time
+                nullable: true
+
+    EmployeeCreate:
+        type: object
+        required:
+            - name
+            - last_name
+            - email
+            - position
+            - salary
+            - admission_date
+        properties:
+            name:
+                type: string
+            last_name:
+                type: string
+            email:
+                type: string
+            position:
+                type: string
+            salary:
+                type: number
+                format: float
+            admission_date:
+                type: string
+                format: date-time

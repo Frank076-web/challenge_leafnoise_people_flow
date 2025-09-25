@@ -1,0 +1,29 @@
+tags:
+    - Seed
+summary: Populate database with default positions and employees
+description: |
+    This endpoint will seed the database with 6 default positions and 7 employees.
+    Existing data in the Employee and Position collections will be deleted.
+responses:
+    '200':
+        description: Database seeded successfully
+        content:
+            application/json:
+                schema:
+                    type: object
+                    properties:
+                        success:
+                            type: boolean
+                        message:
+                            type: string
+    '500':
+        description: Internal server error
+        content:
+            application/json:
+                schema:
+                    type: object
+                    properties:
+                        success:
+                            type: boolean
+                        message:
+                            type: string

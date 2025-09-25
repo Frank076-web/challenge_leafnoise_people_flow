@@ -1,0 +1,19 @@
+tags:
+    - Positions
+parameters:
+    - name: id
+      in: path
+      required: true
+      type: string
+responses:
+    '200':
+        description: Position deleted successfully
+        schema:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                message:
+                    type: string
+    '404':
+        description: Position not found

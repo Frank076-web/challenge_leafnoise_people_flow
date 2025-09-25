@@ -1,0 +1,46 @@
+tags:
+    - Positions
+parameters:
+    - name: body
+      in: body
+      required: true
+      schema:
+          $ref: '#/definitions/PositionCreate'
+responses:
+    '200':
+        description: Position created successfully
+        schema:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                data:
+                    $ref: '#/definitions/PositionDto'
+    '400':
+        description: Data validation failed
+
+definitions:
+    PositionDto:
+        type: object
+        properties:
+            id:
+                type: string
+            name:
+                type: string
+            description:
+                type: string
+                nullable: true
+            deleted:
+                type: boolean
+            deleted_at:
+                type: string
+                format: date-time
+                nullable: true
+
+    PositionCreate:
+        type: object
+        required:
+            - name
+        properties:
+            name:
+                type: string

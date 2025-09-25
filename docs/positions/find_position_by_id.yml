@@ -1,0 +1,34 @@
+tags:
+    - Positions
+parameters:
+    - name: id
+      in: path
+      required: true
+      type: string
+responses:
+    '200':
+        description: Position found by ID
+        schema:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                data:
+                    $ref: '#/definitions/PositionDto'
+    '404':
+        description: Position not found
+
+definitions:
+    PositionDto:
+        type: object
+        properties:
+            id:
+                type: string
+            name:
+                type: string
+            deleted:
+                type: boolean
+            deleted_at:
+                type: string
+                format: date-time
+                nullable: true

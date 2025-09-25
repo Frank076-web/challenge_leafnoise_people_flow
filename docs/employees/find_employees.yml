@@ -1,0 +1,68 @@
+tags:
+    - Employees
+parameters:
+    - name: position
+      in: query
+      schema:
+          type: string
+      required: false
+      description: Filter employees by position
+    - name: page
+      in: query
+      schema:
+          type: integer
+          default: 1
+    - name: limit
+      in: query
+      schema:
+          type: integer
+          default: 10
+responses:
+    '200':
+        description: Paginated list of employees
+        schema:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                data:
+                    $ref: '#/definitions/EmployeeFindAll'
+
+definitions:
+    EmployeeDto:
+        type: object
+        properties:
+            id:
+                type: string
+            name:
+                type: string
+            last_name:
+                type: string
+            email:
+                type: string
+            position:
+                type: string
+            salary:
+                type: number
+                format: float
+            admission_date:
+                type: string
+                format: date-time
+            deleted:
+                type: boolean
+            deleted_at:
+                type: string
+                format: date-time
+                nullable: true
+
+    EmployeeFindAll:
+        type: object
+        properties:
+            employees:
+                type: array
+                items:
+                    $ref: '#/definitions/EmployeeDto'
+            pages:
+                type: integer
+            total:
+                type: integer

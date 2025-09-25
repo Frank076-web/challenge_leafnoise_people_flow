@@ -1,0 +1,51 @@
+tags:
+    - Positions
+parameters:
+    - name: id
+      in: path
+      type: string
+      required: true
+      description: Position ID
+    - name: body
+      in: body
+      required: true
+      schema:
+          $ref: '#/definitions/PositionUpdate'
+responses:
+    '200':
+        description: Position updated successfully
+        schema:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                data:
+                    $ref: '#/definitions/PositionDto'
+    '400':
+        description: Data validation failed
+    '404':
+        description: Position not found
+
+definitions:
+    PositionDto:
+        type: object
+        properties:
+            id:
+                type: string
+            name:
+                type: string
+            description:
+                type: string
+                nullable: true
+            deleted:
+                type: boolean
+            deleted_at:
+                type: string
+                format: date-time
+                nullable: true
+
+    PositionUpdate:
+        type: object
+        properties:
+            name:
+                type: string

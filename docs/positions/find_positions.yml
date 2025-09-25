@@ -1,0 +1,39 @@
+tags:
+    - Positions
+responses:
+    '200':
+        description: Paginated list of positions
+        schema:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                data:
+                    type: object
+                    properties:
+                        positions:
+                            type: array
+                            items:
+                                $ref: '#/definitions/PositionDto'
+                        pages:
+                            type: integer
+                        total:
+                            type: integer
+
+definitions:
+    PositionDto:
+        type: object
+        properties:
+            id:
+                type: string
+            name:
+                type: string
+            description:
+                type: string
+                nullable: true
+            deleted:
+                type: boolean
+            deleted_at:
+                type: string
+                format: date-time
+                nullable: true

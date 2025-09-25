@@ -1,0 +1,32 @@
+services:
+  challenge_app:
+    build: .
+    container_name: employee_app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongo
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    networks:
+      - challenge_network
+
+  mongo:
+    image: mongo:latest
+    container_name: employee_mongo_db
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - challenge_network
+
+networks:
+  challenge_network:
+    driver: bridge
+
+volumes:
+  mongo_data:
